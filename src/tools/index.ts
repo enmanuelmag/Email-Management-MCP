@@ -1,7 +1,7 @@
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp";
 
-import { registerDummyTools } from "@/tools/dummy-tool";
+import { registerEmailTools } from "@/tools/email";
 
 export function registerTools(server: McpServer) {
-  registerDummyTools(server);
+  registerEmailTools(server);
 }
