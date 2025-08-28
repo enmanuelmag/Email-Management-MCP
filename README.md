@@ -25,7 +25,7 @@ This project is designed to summarize emails using a custom IMAP client to conne
 ### Command (NPM)
 1. Install dependencies `pnpm install -g @cardor/email-summarizer`
 2. Add the configuration to your app client.
-```json
+```markdown
 "email-summarizer": {
   "type": "stdio", // Maybe your client MCP require specific type, like 'stdio'
   "command": "cardor-email-summarizer",
@@ -54,7 +54,7 @@ This project is designed to summarize emails using a custom IMAP client to conne
 1. Clone the repository `git clone <repository-url>`
 2. Build the Docker image `pnpm run docker:build`
 3. Add the configuration to your app client.
-```json
+```markdown
 "email-dock": {
   "command": "docker",
   "args": [
