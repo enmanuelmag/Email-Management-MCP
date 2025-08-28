@@ -9,24 +9,24 @@
     "README.md"
   ],
   "bin": {
-    "cardor-email-summarizer": "dist/main.js",
-    "cardor-email-summarizer-server": "dist/server.js"
+    "cardor-email-management": "dist/main.js",
+    "cardor-email-management-server": "dist/server.js"
   },
   "scripts": {
     "dev": "tsx ./src/main.ts",
     "serve": "tsx ./src/server.ts",
     "start": "node dist/main.js",
     "build": "tsc && tsc-alias && ts-add-js-extension --dir=dist",
-    "docker:build": "docker build -t email-summarizer .",
+    "docker:build": "docker build -t email-management .",
     "docker:start": "docker compose up",
     "docker:stop": "docker compose down",
     "docker:build-and-start": "npm run build:docker && docker compose up -d",
     "docker:remove": "docker compose down --rmi all --volumes --remove-orphans",
-    "docker:remove:img": "docker rmi email-summarizer --force"
+    "docker:remove:img": "docker rmi email-management --force"
   },
   "keywords": [
     "email",
-    "summarizer",
+    "management",
     "modelcontextprotocol",
     "mcp",
     "typescript",
