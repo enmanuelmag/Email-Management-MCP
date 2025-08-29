@@ -1,3 +1,4 @@
+import { completable } from "@modelcontextprotocol/sdk/server/completable.js";
 import { z } from "zod";
 
 // Auth Email Schema
@@ -81,3 +82,22 @@ export const MarkEmailsAsReadOutputSchema = z.object({
 export type MarkEmailsAsReadOutputType = z.infer<
   typeof MarkEmailsAsReadOutputSchema
 >;
+
+// Send email
+export const SendEmailInputSchema = z.object({
+  to: z.string().email().describe("Recipient email address"),
+  subject: z.string().min(2).max(100).describe("Email subject"),
+  body: z.string().min(2).describe("Email body content"),
+  tone: completable(z.string().describe("Tone of the email"), (tone) =>
+    ["informal", "friendly", "professional", "casual"].filter((t) =>
+      t.startsWith(tone)
+    )
+  ),
+});
+export type SendEmailInputType = z.infer<typeof SendEmailInputSchema>;
+
+export const SendEmailOutputSchema = z.object({
+  success: z.boolean(),
+  error: z.string().nullish(),
+});
+export type SendEmailOutputType = z.infer<typeof SendEmailOutputSchema>;
