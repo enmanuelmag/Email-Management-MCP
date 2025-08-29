@@ -2,6 +2,15 @@ import { SendEmailInputSchema } from "@/types/email";
 
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp";
 
+const promptSendEmail = `
+You are about to send an email with the following details:
+
+Tone: {{tone}}
+To: {{to}}
+Subject: {{subject}}
+Body: {{body}}
+`;
+
 export function registerEmailPrompts(server: McpServer) {
   server.registerPrompt(
     "send-email",
@@ -12,14 +21,11 @@ export function registerEmailPrompts(server: McpServer) {
       argsSchema: SendEmailInputSchema.shape,
     },
     ({ tone, to, subject, body }) => {
-      const prompt = `
-      You are about to send an email with the following details:
-
-      Tone: ${tone}
-      To: ${to}
-      Subject: ${subject}
-      Body: ${body}
-      `;
+      const prompt = promptSendEmail
+        .replace("{{tone}}", tone)
+        .replace("{{to}}", to)
+        .replace("{{subject}}", subject)
+        .replace("{{body}}", body);
 
       return {
         messages: [
