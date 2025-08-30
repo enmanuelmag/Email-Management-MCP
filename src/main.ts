@@ -6,8 +6,8 @@ import { registerPrompts } from "@/prompts";
 import { registerTools } from "@/tools";
 
 const server = new McpServer({
-  name: "dummy-mcp",
-  version: "1.0.0",
+  name: "email-management-mcp",
+  version: "3.1.2",
 });
 
 registerTools(server);
